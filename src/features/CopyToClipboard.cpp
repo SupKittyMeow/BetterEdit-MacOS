@@ -20,6 +20,7 @@ static bool isProbablyObjectString(std::string_view str) {
 }
 
 class $modify(EditorUI) {
+    #if __APPLE__
     // Hook these instead of copyObjects and pasteObjects so something like 
     // onDuplicate doesn't get overwritten
     void doCopyObjects(bool idk) {
@@ -41,4 +42,5 @@ class $modify(EditorUI) {
             EditorUI::doPasteObjects(idk);
         }
     }
+    #endif
 };
