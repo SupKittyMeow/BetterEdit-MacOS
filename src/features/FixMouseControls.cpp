@@ -69,13 +69,13 @@ class $modify(EditorUI) {
                 objLayer->setPositionY(
                     objLayer->getPositionY() + y * mult
                 );
-                // add support for the horizontal trackpad scrolling on mac
-                // causes the editor to move sideways when scrolling on windows
-                #ifdef GEODE_IS_MACOS
-                objLayer->setPositionX(
-                    objLayer->getPositionX() + x * mult
-                );
-                #endif
+                // // add support for the horizontal trackpad scrolling on mac
+                // // causes the editor to move sideways when scrolling on windows
+                // #ifdef GEODE_IS_MACOS
+                // objLayer->setPositionX(
+                //     objLayer->getPositionX() + x * mult
+                // );
+                // #endif
             }
 
             // call original but make it not do anything other than update 
