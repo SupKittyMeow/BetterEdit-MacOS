@@ -1,6 +1,8 @@
-#include <Geode/modify/EditorUI.hpp>
+#if __APPLE__
 #include <Geode/utils/general.hpp>
+#include <Geode/modify/EditorUI.hpp>
 #include <Geode/ui/Notification.hpp>
+#endif
 
 using namespace geode::prelude;
 
@@ -20,14 +22,13 @@ static bool isProbablyObjectString(std::string_view str) {
 }
 
 class $modify(EditorUI) {
+    #if __APPLE__
     // Hook these instead of copyObjects and pasteObjects so something like 
     // onDuplicate doesn't get overwritten
     void doCopyObjects(bool idk) {
         EditorUI::doCopyObjects(idk);
         if (Mod::get()->template getSettingValue<bool>("copy-paste-from-clipboard")) {
-            #if __APPLE__
             clipboard::write(GameManager::get()->m_editorClipboard);
-            #endif
         }
     }
     void doPasteObjects(bool idk) {
@@ -43,4 +44,5 @@ class $modify(EditorUI) {
             EditorUI::doPasteObjects(idk);
         }
     }
+    #endif
 };
